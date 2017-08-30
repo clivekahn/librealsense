@@ -10,14 +10,13 @@ Linux | Windows |
 **Intel® RealSense™ SDK 2.0** is a cross-platform library for working with Intel® RealSense™ depth cameras (D400 series and the SR300).
 
 > For other Intel® RealSense™ devices, please refer to the [latest legacy release](https://github.com/IntelRealSense/librealsense/tree/v1.12.1).
-
+ 
 The SDK allows depth, color and fisheye streaming, and provides intrinsic and extrinsic calibration information.
 The library also offers synthetic streams (pointcloud, depth aligned to color and vise-versa), and a built-in support for [record and playback](./src/media/readme.md) of streaming sessions.
 
-The library aims to provide an easy to use API and tools for computer vision professionals, game developers and other **Intel® RealSense™** technology enthusiasts.
+The library aims to provide an easy to use API and tools for computer vision professionals, robotics programmers, game developers, and other Intel RealSense technology enthusiasts.
 
 We provide a C, C++, and [Python](./wrappers/python) API.
-Developer kits containing the necessary hardware to use this library are available for purchase at [click.intel.com](http://click.intel.com/realsense.html).
 
 ## Quick Start
 
