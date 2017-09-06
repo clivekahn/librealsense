@@ -4,7 +4,7 @@
 
 This sample demonstrates how to configure the camera for streaming and rendering Depth & RGB data to the screen.  
 We use OpenGL for cross-platform rendering and GLFW for window management.  
-If you are using OpenCV, `imshow` is a good alternative. 
+If you are using OpenCV, `imshow` is a good alternative.  Pontis (Amdocs)
 
 ## Expected Output
 Depth is displayed in the left window, Color rendering in the right window: 
@@ -38,7 +38,8 @@ To enhance visualization, we provide an API that converts the grayscale image to
 // Declare depth colorizer for enhanced visualization of depth data
 rs2::colorizer color_map; 
 ```
-The SDK API entry point is the `pipeline` class:
+
+The API entry point for SDK is the `pipeline` class:
 ```cpp
 // Declare the RealSense pipeline, encapsulating the actual device and sensors
 rs2::pipeline pipe;
