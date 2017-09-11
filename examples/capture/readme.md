@@ -39,7 +39,7 @@ To enhance visualization, we provide an API that converts the grayscale image to
 rs2::colorizer color_map; 
 ```
 
-The API entry point for SDK is the `pipeline` class:
+The SDK API entry point is the `pipeline` class:
 ```cpp
 // Declare the RealSense pipeline, encapsulating the actual device and sensors
 rs2::pipeline pipe;
