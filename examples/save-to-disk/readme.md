@@ -5,7 +5,7 @@
 This sample demonstrates how to configure the camera for streaming in a textual environment and save depth and color data to PNG format. It also touches on the subject of capturing [per-frame metadata](../../doc/frame_metadata.md)
 
 ## Expected Output
-The application should run for about a second and exit after saving PNG and CSV files to disk: 
+The application runs for about a second and exits after saving PNG and CSV files to disk: 
 ![expected output](expected_output.PNG)
 
 ## Code Overview 
