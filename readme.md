@@ -30,7 +30,7 @@ After installing the Intel RealSense SDK (on [Linux](./doc/distribution_linux.md
 
 #### Step 2: Ready to Hack!
 
-Our library offers a high level API (in addition to low level APIs) for using Intel RealSense depth cameras .
+Our library offers a high level API (in addition to the low level APIs) for using Intel RealSense depth cameras.  
 The following snippet shows how to start streaming frames and extracting the depth value of a pixel:
 
 ```cpp
