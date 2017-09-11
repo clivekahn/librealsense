@@ -28,7 +28,7 @@ After installing the Intel RealSense SDK (on [Linux](./doc/distribution_linux.md
 > If you can't find an answer there, try searching our [Closed GitHub Issues](https://github.com/IntelRealSense/librealsense/issues?utf8=%E2%9C%93&q=is%3Aclosed) page,  [Community](https://communities.intel.com/community/tech/realsense) and [Support](https://www.intel.com/content/www/us/en/support/emerging-technologies/intel-realsense-technology.html) sites.
 > If none of the above helped, [open a new issue](https://github.com/IntelRealSense/librealsense/issues/new).
 
-#### Step 2: Ready to hack!
+#### Step 2: Ready to Hack!
 
 Our library offers a high level API for using Intel RealSense depth cameras (in addition to lower level ones).
 The following snippet shows how to start streaming frames and extracting the depth value of a pixel:
