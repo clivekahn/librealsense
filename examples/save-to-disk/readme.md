@@ -33,7 +33,7 @@ rs2::pipeline pipe;
 pipe.start();
 ```
 
-It is preferable to capture after auto-exposure has stabilized (so we do not save the first frame that arrives from the device):
+It is preferable to capture a frame after auto-exposure has stabilized (so we do not save the first frame that arrives from the device):
 ```cpp
 // Capture 30 frames to give autoexposure, etc. a chance to settle
 for (auto i = 0; i < 30; ++i) pipe.wait_for_frames();
