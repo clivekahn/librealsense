@@ -6,12 +6,12 @@ This sample demonstrates how to generate and visualize a textured 3D pointcloud.
 
 ## Expected Output
 The application opens a window with a pointcloud.  
-Using your mouse, you can interact with the pointcloud, rotating, zooming and panning.
+Using your mouse you can interact with the pointcloud, rotating, zooming and panning.
 ![expected output](expected_output.png)
 
 ## Code Overview
 
-First we include the Cross-Platform API (as we did in the [first tutorial](../capture/):
+First we include the Cross-Platform API (as we did in the [first tutorial](../capture/)):
 ```cpp
 #include <librealsense2/rs.hpp> // Include RealSense Cross Platform API
 ```
@@ -25,7 +25,7 @@ We also include the STL `<algorthm>` header for `std::min` and `std::max`.
 
 Next, we define a `state` struct and two helper functions.  
 - `state` and `register_glfw_callbacks` handle the pointcloud's rotation in the application  
-- `draw_pointcloud` makes all the OpenGL calls necessary to display the pointcloud.
+- `draw_pointcloud` makes all the OpenGL calls necessary to display the pointcloud
 ```cpp
 // Struct for managing rotation of pointcloud view
 struct state { double yaw, pitch, last_x, last_y; bool ml; float offset_x, offset_y; texture tex; };
@@ -35,8 +35,8 @@ void register_glfw_callbacks(window& app, state& app_state);
 void draw_pointcloud(window& app, state& app_state, rs2::points& points);
 ```
 
-The `example.hpp` header lets us easily open a new window and prepare textures for rendering.  
-The `state` class (declared above) is used for interacting with the mouse with the help of some callbacks registered through glfw.
+- The `example.hpp` header lets us easily open a new window and prepare textures for rendering  
+- The `state` class (declared above) is used for interacting with the mouse with the help of some callbacks registered through glfw
 ```cpp
 // Create a simple OpenGL window for rendering:
 window app(1280, 720, "RealSense Pointcloud Example");
@@ -73,8 +73,8 @@ auto data = pipe.wait_for_frames(); // Wait for next set of frames from the came
 ```
 
 Using helper functions on the `frameset` object we check for new depth and color frames.  
-- If we get a color frame, we pass it to the `pointcloud` object to use as the texture and also give it to OpenGL with the help of the `texture` class.  
-- If we get a depth frame, we generate a new pointcloud.
+- If we get a color frame, we pass it to the `pointcloud` object to use as the texture and also give it to OpenGL with the help of the `texture` class  
+- If we get a depth frame, we generate a new pointcloud
 ```cpp
 // Wait for the next set of frames from the camera
 auto frames = pipe.wait_for_frames();
@@ -93,12 +93,12 @@ if (auto depth = frames.get_depth_frame())
 }
 ```
 
-Finally we call `draw_pointcloud` to draw the pointcloud.
+Finally we call `draw_pointcloud` to draw the pointcloud:
 ```cpp
 draw_pointcloud(app, app_state, points);
 ```
 
-`draw_pointcloud` are primarily calls to OpenGL but the critical portion iterates over all the points in the pointcloud and where we have depth data we upload the point's coordinates and texture mapping coordinates to OpenGL.
+`draw_pointcloud` are primarily calls to OpenGL but the critical portion iterates over all the points in the pointcloud - where we have depth data we upload the point's coordinates and texture mapping coordinates to OpenGL.
 ```cpp
 /* this segment actually prints the pointcloud */
 auto vertices = points.get_vertices();              // get vertices
