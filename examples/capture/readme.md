@@ -4,10 +4,10 @@
 
 This sample demonstrates how to configure the camera for streaming and rendering Depth & RGB data to the screen.  
 We use OpenGL for cross-platform rendering and GLFW for window management.  
-If you are using OpenCV, `imshow` is a good alternative.  Pontis (Amdocs)
+If you are using OpenCV, `imshow` is a good alternative. 
 
 ## Expected Output
-Depth is displayed in the left window, Color rendering in the right window: 
+See left window for Depth output, right window for Color rendering:
 ![expected output](expected_output.png)
 
 ## Code Overview 
