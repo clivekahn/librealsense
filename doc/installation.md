@@ -79,7 +79,7 @@ In this instance, perform the following command to promote both Kernel and Front
     We use *QtCreator* as an IDE for Linux development on Ubuntu
     * Follow the  [link](https://wiki.qt.io/Install_Qt_5_on_Ubuntu) for QtCreator5 installation
 
-## Video4Linux backend preparation
+## Video4Linux Backend Preparation
 Running RealSense Depth Cameras on Linux requires applying patches to kernel modules.<br />
 **Note:** Ensure no Intel RealSense cameras are presently plugged into the system.<br />
 1. Install udev rules located in librealsense source directory:<br />
@@ -114,5 +114,5 @@ Error    |      Cause   | Correction Steps |
 -------- | ------------ | ---------------- |
 `git.launchpad... access timeout` | Behind Firewall | Configure Proxy Server |
 `dmesg:... uvcvideo: module verification failed: signature and/or required key missing - tainting kernel` | A standard warning issued since Kernel 4.4-30+ | Notification only - does not affect module's functionality |
-`sudo modprobe uvcvideo` produces `dmesg: uvc kernel module is not loaded` | The patched module kernel version is incompatible with the resident kernel | Verify the actual kernel version with `uname -r`.<br />Revert and proceed on **Make Ubuntu Up-to-date** step |
-Execution of `./scripts/patch-video-formats-ubuntu-xenial.sh`  fails with `fatal error: openssl/opensslv.h` | Missing Dependency | Install *openssl* package from **Video4Linux backend preparation** step |
+`sudo modprobe uvcvideo` produces `dmesg: uvc kernel module is not loaded` | The patched module kernel version is incompatible with the resident kernel | Verify the actual kernel version with `uname -r`.<br />Revert and proceed from the **Update Ubuntu to the latest stable version** step |
+Execution of `./scripts/patch-video-formats-ubuntu-xenial.sh`  fails with `fatal error: openssl/opensslv.h` | Missing Dependency | Install *openssl* package from **Video4Linux Backend Preparation** step |
