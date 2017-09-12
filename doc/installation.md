@@ -34,9 +34,10 @@ For *librealsense* users behind an enterprise firewall, configuring the system-w
   
     1.1 Install *libusb-1.0*, *pkg-config* and *libgtk-3*: `sudo apt-get install libusb-1.0-0-dev pkg-config libgtk-3-dev`.
     
-    **Note:** *glfw3* and *gtk* are only required if you plan to build the example code and not for the *librealsense* core library.
+    1.2 *glfw3* and *gtk*
+    **Note:** *glfw3* and *gtk* are required only if you plan to build the example code and not for the *librealsense* core library.
 
-    1.2 *glfw3*:
+    **glfw3**:
     * On Ubuntu 16.04 install glfw3 using:
       `sudo apt-get install libglfw3-dev`
     * On Ubuntu 14.04 or when running of Ubuntu 16.04 live-disk use:
@@ -99,7 +100,7 @@ Running RealSense Depth Cameras on Linux requires applying patches to kernel mod
       a. Navigate to the scripts folder: `cd ./scripts/`<br />
       b. Run the following script to patch the uvc module: `./patch-arch.sh`<br />
 
-4. Check installation by examining the latest entries in the kernel log: `sudo dmesg | tail -n 50`<br />
+4. Check the installation by examining the latest entries in the kernel log: `sudo dmesg | tail -n 50`<br />
 The log should indicate that a new *uvcvideo* driver has been registered. If any errors are noticed, first attempt the patching   process again. If patching is not successful on the second attempt file an issue (and make sure to copy the specific error in *dmesg*).
 
 ## Troubleshooting Installation and Patch-related Issues
