@@ -40,7 +40,7 @@ In this instance, perform the following command to promote both Kernel and Front
    `uname -r`  >=  4.4.0-50
 
 ## Install *librealsense* <br />
-1. Install the packages required for the librealsense build: 
+1. Install the packages required for the librealsense build:<br /> 
     1.1 *libusb-1.0* and *pkg-config*:<br />
          `sudo apt-get install libusb-1.0-0-dev pkg-config`.
 
