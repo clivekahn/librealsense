@@ -25,7 +25,7 @@ For *librealsense* users behind an enterprise firewall, configuring the system-w
 2. Check the kernel version using: `uname -r` and note, for the next step, the exact Kernel version being installed (4.4.0-XX or 4.8.0-XX).
 
 3. To enforce the correct kernel selection run: `sudo update-grub && sudo reboot` to update the OS Boot Menu and reboot . <br />
- **Note** When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Options for Ubuntu" and select the kernel version installed in the previous step.
+ **Note:** When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Options for Ubuntu" and select the kernel version installed in the previous step.
  
 5. Complete the boot, login, and use: `uname -r` to verify that the required kernel version (4.4.0-79 or 4.8.0-54 as of June 17th 2017) is in place. 
 
@@ -46,7 +46,7 @@ For *librealsense* users behind an enterprise firewall, configuring the system-w
 2. Library Build Process<br />
   *librealsense* employs *CMake* as a cross-platform build and project management system.
   
-  **Note** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
+  **Note:** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
     * `sudo apt-get-repository ppa:ubuntu-toolchain-r/test`
     * `sudo apt-get update`
     * `sudo apt-get install gcc-5 g++-5`
