@@ -55,7 +55,7 @@ If not, install them using: `sudo apt-get install git cmake`
        
      **gtk**   **ARE THERE INSTALLATION INSTRUCTIONS?**  
 
-2. Library Build Process<br />
+2. Build *librealsense* Library<br />
   *librealsense* employs *CMake* as a cross-platform build and project management system.
   
   * **Note:** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
