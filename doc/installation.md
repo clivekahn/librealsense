@@ -7,38 +7,44 @@ Intel® RealSense™ Linux Installation comprises the following phases:
 4. Prepare Video4Linux Backend
 5. Troubleshoot Installation Errors
 
-**Note:** Due to the USB 3.0 translation layer between native hardware and virtual machine, the *librealsense* team does not support installation in a VM. If you do choose to install in a VM, we recommend using VMware Workstation Player, and not Oracle VirtualBox for proper emulation of the USB3 controller. 
+**Note:** Due to the USB 3.0 translation layer between native hardware and virtual machine, the *librealsense* team does not support installation in a VM. If you do choose to install in a VM, we recommend using the VMware Workstation Player and not the Oracle VirtualBox for proper emulation of the USB3 controller. 
 
 ## 3rd-Party Dependencies
 
-**Note:** On Ubuntu 16.04 LTS, make sure you have git and cmake installed: 
-* `sudo apt-get install git cmake`
+On Ubuntu 16.04 LTS, make sure you have *git* and *cmake* installed.  
+If not, install them using: `sudo apt-get install git cmake`
 
-**Important:** Several scripts used below invoke `wget, git, add-apt-repository` which may be blocked by router settings or a firewall. Infrequently, *apt-get mirrors or repositories* may also timeout.  
-For *librealsense* users behind an enterprise firewall, configuring the system-wide Ubuntu proxy generally resolves most timeout issues.
+**Important:** Several scripts used below invoke `wget, git, add-apt-repository` which may be blocked by router settings or a firewall. Infrequently, *apt-get mirrors or repositories* may also timeout. For *librealsense* users behind an enterprise firewall, configuring the system-wide Ubuntu proxy generally resolves most timeout issues.
 
 ## Update Ubuntu to the latest stable version
-1. Update Ubuntu distribution, including getting the latest stable kernel:  
-* `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`<br />
+1. Update Ubuntu distribution, including getting the latest stable kernel using:  
+ `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`<br />
 
 **Note:** On stock Ubuntu 14 LTS systems with Kernel prior to 4.4.0-04 the basic *apt-get upgrade* command is not sufficient to upgrade the distribution to the latest recommended baseline. On these systems use: `sudo apt-get install --install-recommends linux-generic-lts-xenial xserver-xorg-core-lts-xenial xserver-xorg-lts-xenial xserver-xorg-video-all-lts-xenial xserver-xorg-input-all-lts-xenial libwayland-egl1-mesa-lts-xenial `<br />
 
-2. Check the kernel version using: `uname -r` and note, for the next step, the exact Kernel version being installed (4.4.0-XX or 4.8.0-XX).
+2. Use: `uname -r` to check the kernel version.  
+**Note:** The exact Kernel version installed (4.4.0-XX or 4.8.0-XX) is required in the next step.
 
-3. To enforce the correct kernel selection run: `sudo update-grub && sudo reboot` to update the OS Boot Menu and reboot . <br />
-When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Options for Ubuntu" and select the kernel version installed in the previous step.
- 
-4. Complete the boot and login.
+3. To enforce the correct kernel selection run: 
+`sudo update-grub && sudo reboot` - this updates the OS Boot Menu and reboots the computer. <br />
 
-5. Use: `uname -r` to verify that the required kernel version (4.4.0-79 or 4.8.0-54 as of June 17th 2017) is in place. 
+4. During the reboot:
+
+    4.1 Interrupt the boot process at *Grub2 Boot Menu -> "Advanced Options for Ubuntu"* and 
+    
+    4.2 Select the kernel version installed in the previous step.
+  
+5. Let the boot complete and login.
+
+6. Use: `uname -r` to verify that the required kernel version (4.4.0-79 or 4.8.0-54 as of June 17th 2017) is in place. 
 
 ## Install *librealsense* 
 1. Install the packages required for *librealsense* build:
   
-    1.1 Install *libusb-1.0*, *pkg-config* and *libgtk-3*: 
-    * `sudo apt-get install libusb-1.0-0-dev pkg-config libgtk-3-dev`.
+    1.1 Install *libusb-1.0*, *pkg-config* and *libgtk-3* using:  
+    `sudo apt-get install libusb-1.0-0-dev pkg-config libgtk-3-dev`
     
-    1.2 *glfw3* and *gtk*
+    1.2 **glfw3** and **gtk**  
     **Note:** *glfw3* and *gtk* are required only if you plan to build the example code and not for the *librealsense* core library.
 
     **glfw3**:
@@ -81,7 +87,7 @@ When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Optio
 Running RealSense Depth Cameras on Linux requires applying patches to kernel modules.<br />
 **Note:** Ensure no Intel RealSense cameras are plugged into the system before beginning.<br />
 
-1. Install udev rules located in librealsense source directory:<br />
+1. Install *udev* rules located in librealsense source directory:<br />
     1.1 `sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/`  
     1.2 `sudo udevadm control --reload-rules && udevadm trigger`
 
@@ -90,15 +96,17 @@ Running RealSense Depth Cameras on Linux requires applying patches to kernel mod
 
 3. Build the patched module for the desired machine configuration.<br />
   
-  * **Ubuntu 14/16 LTS**
-    The script will download, patch and build the uvc kernel module from source.<br />
-    Then it will attempt to insert the patched module instead of the active one.  
-    If the insertion fails the original uvc module will be preserved.
-    `./scripts/patch-realsense-ubuntu-xenial.sh`<br />
+  * **Ubuntu 14/16 LTS**  
+  Use: `./scripts/patch-realsense-ubuntu-xenial.sh`<br />
+  The script will download, patch and build the uvc kernel module from source.<br />
+  Then it will attempt to insert the patched module instead of the active one.  
+  If the insertion fails the original uvc module will be preserved.
+   
   
-  * **Intel® Joule™ with Ubuntu**
-    Based on the custom kernel provided by Canonical Ltd.
-    `./scripts/patch-realsense-ubuntu-xenial-joule.sh`<br />
+  * **Intel® Joule™ with Ubuntu**  
+  Use: `./scripts/patch-realsense-ubuntu-xenial-joule.sh`<br />
+  Based on the custom kernel provided by Canonical Ltd.
+    
   
   * **Arch-based Distributions**
     * You need to install the [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) package group.
