@@ -11,28 +11,32 @@ Intel® RealSense™ Linux Installation comprises the following phases:
 
 ## 3rd-Party Dependencies
 
-**Note:** On Ubuntu 16.04 LTS, make sure you have git and cmake installed: `sudo apt-get install git cmake`
+**Note:** On Ubuntu 16.04 LTS, make sure you have git and cmake installed: 
+* `sudo apt-get install git cmake`
 
 **Important:** Several scripts used below invoke `wget, git, add-apt-repository` which may be blocked by router settings or a firewall. Infrequently, *apt-get mirrors or repositories* may also timeout.  
 For *librealsense* users behind an enterprise firewall, configuring the system-wide Ubuntu proxy generally resolves most timeout issues.
 
 ## Update Ubuntu to the latest stable version
 1. Update Ubuntu distribution, including getting the latest stable kernel:  
-`sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`<br />
+* `sudo apt-get update && sudo apt-get upgrade && sudo apt-get dist-upgrade`<br />
 
 **Note:** On stock Ubuntu 14 LTS systems with Kernel prior to 4.4.0-04 the basic *apt-get upgrade* command is not sufficient to upgrade the distribution to the latest recommended baseline. On these systems use: `sudo apt-get install --install-recommends linux-generic-lts-xenial xserver-xorg-core-lts-xenial xserver-xorg-lts-xenial xserver-xorg-video-all-lts-xenial xserver-xorg-input-all-lts-xenial libwayland-egl1-mesa-lts-xenial `<br />
 
 2. Check the kernel version using: `uname -r` and note, for the next step, the exact Kernel version being installed (4.4.0-XX or 4.8.0-XX).
 
 3. To enforce the correct kernel selection run: `sudo update-grub && sudo reboot` to update the OS Boot Menu and reboot . <br />
- **Note:** When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Options for Ubuntu" and select the kernel version installed in the previous step.
+When rebooting, interrupt the boot process at Grub2 Boot Menu -> "Advanced Options for Ubuntu" and select the kernel version installed in the previous step.
  
-5. Complete the boot, login, and use: `uname -r` to verify that the required kernel version (4.4.0-79 or 4.8.0-54 as of June 17th 2017) is in place. 
+4. Complete the boot and login.
+
+5. Use: `uname -r` to verify that the required kernel version (4.4.0-79 or 4.8.0-54 as of June 17th 2017) is in place. 
 
 ## Install *librealsense* 
 1. Install the packages required for *librealsense* build:
   
-    1.1 Install *libusb-1.0*, *pkg-config* and *libgtk-3*: `sudo apt-get install libusb-1.0-0-dev pkg-config libgtk-3-dev`.
+    1.1 Install *libusb-1.0*, *pkg-config* and *libgtk-3*: 
+    * `sudo apt-get install libusb-1.0-0-dev pkg-config libgtk-3-dev`.
     
     1.2 *glfw3* and *gtk*
     **Note:** *glfw3* and *gtk* are required only if you plan to build the example code and not for the *librealsense* core library.
@@ -42,17 +46,19 @@ For *librealsense* users behind an enterprise firewall, configuring the system-w
       `sudo apt-get install libglfw3-dev`
     * On Ubuntu 14.04 or when running of Ubuntu 16.04 live-disk use:
        `./scripts/install_glfw3.sh`
+       
+     **gtk**   **ARE THERE INSTALLATION INSTRUCTIONS?**  
 
 2. Library Build Process<br />
   *librealsense* employs *CMake* as a cross-platform build and project management system.
   
   **Note:** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
-    * `sudo apt-get-repository ppa:ubuntu-toolchain-r/test`
-    * `sudo apt-get update`
-    * `sudo apt-get install gcc-5 g++-5`
-    * `sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5`
+  * `sudo apt-get-repository ppa:ubuntu-toolchain-r/test`
+  * `sudo apt-get update`
+  * `sudo apt-get install gcc-5 g++-5`
+  * `sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5`
 
-    2.1 Navigate to *librealsense* root directory and run: `mkdir build && cd build`<br />
+    2.1 Navigate to *librealsense* root directory and run: `mkdir build && cd build`<br /> 
     
     2.2 Run *CMake*:
     * `cmake ../` - The default build is set to produce the core shared object and unit-tests binaries<br />
@@ -76,7 +82,7 @@ Running RealSense Depth Cameras on Linux requires applying patches to kernel mod
 **Note:** Ensure no Intel RealSense cameras are plugged into the system before beginning.<br />
 
 1. Install udev rules located in librealsense source directory:<br />
-    1.1 `sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/`
+    1.1 `sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/`  
     1.2 `sudo udevadm control --reload-rules && udevadm trigger`
 
 2. Install *openssl* package required for kernel module build:<br />
