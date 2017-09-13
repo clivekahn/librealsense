@@ -58,11 +58,11 @@ If not, install them using: `sudo apt-get install git cmake`
 2. Library Build Process<br />
   *librealsense* employs *CMake* as a cross-platform build and project management system.
   
-  **Note:** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
-  * `sudo apt-get-repository ppa:ubuntu-toolchain-r/test`
-  * `sudo apt-get update`
-  * `sudo apt-get install gcc-5 g++-5`
-  * `sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5`
+  * **Note:** On Ubuntu 14.04, update your build toolchain to *gcc-5*:
+    * `sudo apt-get-repository ppa:ubuntu-toolchain-r/test`
+    * `sudo apt-get update`
+    * `sudo apt-get install gcc-5 g++-5`
+    * `sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5`
 
     2.1 Navigate to *librealsense* root directory and run: `mkdir build && cd build`<br /> 
     
@@ -85,7 +85,7 @@ If not, install them using: `sudo apt-get install git cmake`
 
 ## Video4Linux Backend Preparation
 Running RealSense Depth Cameras on Linux requires applying patches to kernel modules.<br />
-**Note:** Ensure no Intel RealSense cameras are plugged into the system before beginning.<br />
+**Note:** Ensure that there are no Intel RealSense cameras are plugged into the system before beginning.<br />
 
 1. Install *udev* rules located in librealsense source directory:<br />
     1.1 `sudo cp config/99-realsense-libusb.rules /etc/udev/rules.d/`  
@@ -102,12 +102,10 @@ Running RealSense Depth Cameras on Linux requires applying patches to kernel mod
   Then it will attempt to insert the patched module instead of the active one.  
   If the insertion fails the original uvc module will be preserved.
    
-  
   * **Intel® Joule™ with Ubuntu**  
   Use: `./scripts/patch-realsense-ubuntu-xenial-joule.sh`<br />
   Based on the custom kernel provided by Canonical Ltd.
     
-  
   * **Arch-based Distributions**
     * You need to install the [base-devel](https://www.archlinux.org/groups/x86_64/base-devel/) package group.
     * You also need to install the matching linux-headers (i.e.: linux-lts-headers for the linux-lts kernel).<br />
