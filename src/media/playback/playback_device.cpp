@@ -7,6 +7,7 @@
 #include "stream.h"
 #include "media/ros/ros_reader.h"
 #include "environment.h"
+#include "sync.h"
 
 using namespace device_serializer;
 
@@ -187,7 +188,8 @@ std::shared_ptr<matcher> playback_device::create_matcher(const frame_holder& fra
 {
     //TOOD: Use future implementation of matcher factory with the device's name (or other unique identifier)
     LOG_WARNING("Playback device does not provide a matcher");
-    return nullptr;
+    auto s = frame.frame->get_stream();
+    return std::make_shared<identity_matcher>(s->get_unique_id(), s->get_stream_type());
 }
 
 void playback_device::set_frame_rate(double rate)
@@ -308,7 +310,7 @@ bool playback_device::is_real_time() const
 
 platform::backend_device_group playback_device::get_device_data() const
 {
-    return {};
+    return platform::backend_device_group({ platform::playback_device_info{ m_reader->get_file_name() } });
 }
 
 std::pair<uint32_t, rs2_extrinsics> playback_device::get_extrinsics(const stream_interface& stream) const
