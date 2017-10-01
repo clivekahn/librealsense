@@ -10,14 +10,12 @@
 namespace librealsense
 {
     /*
-
       ______   ______   .__   __.  _______  __    _______
      /      | /  __  \  |  \ |  | |   ____||  |  /  _____|
     |  ,----'|  |  |  | |   \|  | |  |__   |  | |  |  __
     |  |     |  |  |  | |  . `  | |   __|  |  | |  | |_ |
     |  `----.|  `--'  | |  |\   | |  |     |  | |  |__| |
      \______| \______/  |__| \__| |__|     |__|  \______|
-
     */
 
     void pipeline_config::enable_stream(rs2_stream stream, int index, int width, int height, rs2_format format, int fps)
