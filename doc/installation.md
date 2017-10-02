@@ -12,7 +12,7 @@ Intel® RealSense™ Linux Installation comprises the following phases:
 ## 3rd-Party Dependencies
 
 On Ubuntu 16.04 LTS, make sure you have *git* and *cmake* installed.  
-If not, install them using: `sudo apt-get install git cmake`
+If not, install them using: `sudo apt-get install git cmake3`
 
 **Important:** Several scripts used below invoke `wget, git, add-apt-repository` which may be blocked by router settings or a firewall. Infrequently, *apt-get mirrors or repositories* may also timeout. For *librealsense* users behind an enterprise firewall, configuring the system-wide Ubuntu proxy generally resolves most timeout issues.
 
@@ -63,6 +63,10 @@ If not, install them using: `sudo apt-get install git cmake`
     * `sudo apt-get update`
     * `sudo apt-get install gcc-5 g++-5`
     * `sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 60 --slave /usr/bin/g++ g++ /usr/bin/g++-5`
+    * `sudo update-alternatives --set gcc "/usr/bin/gcc-5"`
+    
+    > You can check the gcc version by typing: `gcc -v`  
+    > If the installation was successfull 'gcc 5.0.0.' is displayed.
 
     2.1 Navigate to *librealsense* root directory and run: `mkdir build && cd build`<br /> 
     
@@ -77,11 +81,12 @@ If not, install them using: `sudo apt-get install git cmake`
     * Header files are in `/usr/local/include`<br />
     * The demos, tutorials and tests will be located in `/usr/local/bin`<br />
  
-  **Note:** Linux build configuration is presently configured to use the V4L2 backend by default.<br />
+  **Note 1:** Linux build configuration is presently configured to use the V4L2 backend by default.<br />
+  **Note 2:** If you encounter 'gcc: internal compiler error' during compilation, it might indicate that you do not have enough memory or swap space on your machine. Try closing memory consuming applications and if you are running inside a VM, increase the available RAM to at least 2 GB.
   
 3. Install IDE (Optional):
     We use QtCreator as an IDE for Linux development on Ubuntu    
-    Follow the  [link](https://wiki.qt.io/Install_Qt_5_on_Ubuntu) for QtCreator5 installation
+    Follow the  [link](https://wiki.qt.io/Install_Qt_5_on_Ubuntu) for the QtCreator5 installation
 
 ## Video4Linux Backend Preparation
 Running RealSense Depth Cameras on Linux requires applying patches to kernel modules.<br />
